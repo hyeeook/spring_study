@@ -25,7 +25,7 @@ jobs:
           USERNAME: ${{ github.repository_owner }}
       - name: Set up Git
         run: |
-          git config user.name "hyeeook"
+          git config user.name "spring_study"
           git config user.email "hyeeook@naver.com"
       - name: Pull remote changes with rebase
         run: |
