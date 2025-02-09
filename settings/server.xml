@@ -7,14 +7,14 @@
 		- 이 파일을 수정해도 Tomcat 설치경로에 있는 원본 파일은 변경되지 않음
 	<용도>
 		- Tomcat 서버 설정 파일
-<구조 - 자세한 사항은 Tomcat 메뉴얼 참조>
-	1) Server(Tomcat)
-	2) Service(Catalina)
-	3) Connector(8080 포트) - HTTP/1.1 프로토콜로 요청이 오면 8080 포트에서 처리하기 위해 대기함
-	4) Engine(localhost) - 여러 Host 포함 가능하고, 그 중에 default 지정할 수 있으며 여기서는 localhost를 default로 지정함
-	5) Realm - 보안 영역 설정
-	6) Host(localhost) - 'www.naver'에 해당하는 부분, 여기서는 localhost로 되어 있음
-						 'appBase' 속성은 WAR 파일의 경로, 여기서는 'webapps' 밑에 넣도록 되어있음
-						 'unpackWARs' 속성은 WAR 파일로 배포 시에 자동으로 압축 해제할지 여부(true : 해제 / false : 미해제)
-	7) Context(/spring_study) - 'reloadable' 속성은 변경되면 자동으로 리로드할지 여부(true : 자동 / false : 수동)
+	<구조 - 자세한 사항은 Tomcat 메뉴얼 참조>
+		1) Server(Tomcat)
+		2) Service(Catalina)
+		3) Connector(8080 포트) - HTTP/1.1 프로토콜로 요청이 오면 8080 포트에서 처리하기 위해 대기함
+		4) Engine(localhost) - 여러 Host 포함 가능하고, 그 중에 default 지정할 수 있으며 여기서는 localhost를 default로 지정함
+		5) Realm - 보안 영역 설정
+		6) Host(localhost) - 'www.naver'에 해당하는 부분, 여기서는 localhost로 되어 있음
+							 'appBase' 속성은 WAR 파일의 경로, 여기서는 'webapps' 밑에 넣도록 되어있음
+							 'unpackWARs' 속성은 WAR 파일로 배포 시에 자동으로 압축 해제할지 여부(true : 해제 / false : 미해제)
+		7) Context(/spring_study) - 'reloadable' 속성은 변경되면 자동으로 리로드할지 여부(true : 자동 / false : 수동)
 -->
