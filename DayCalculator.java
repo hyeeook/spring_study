@@ -44,7 +44,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 //public class DayCalculator
 //{
 //	@RequestMapping("/dayCalculator") //http://localhost:8080/spring_study/dayCalculator?year=2025&month=2&day=5
-//	public static void main(HttpServletRequest request)
+//	public void main(HttpServletRequest request)
 //	{
 //		//1) 입력
 //		String sYear = request.getParameter("year");
@@ -68,22 +68,43 @@ import org.springframework.web.bind.annotation.RequestMapping;
 //}
 
 //원격 실행, 브라우저 출력.
+//@Controller
+//public class DayCalculator
+//{
+//	@RequestMapping("/dayCalculator") //http://localhost:8080/spring_study/dayCalculator?year=2025&month=2&day=5
+//	public void main(HttpServletRequest request, HttpServletResponse response) throws IOException
+//	{
+//		//1) 입력
+//		String sYear = request.getParameter("year");
+//		String sMonth = request.getParameter("month");
+//		String sDay = request.getParameter("day");
+//		
+//		//2) 작업
+//		int iYear = Integer.parseInt(sYear);
+//		int iMonth = Integer.parseInt(sMonth);
+//		int iDay = Integer.parseInt(sDay);
+//		
+//		Calendar cCal = Calendar.getInstance();
+//		cCal.set(iYear, iMonth-1, iDay);
+//		
+//		int iDayOfWeek = cCal.get(Calendar.DAY_OF_WEEK);
+//		char cDayOfWeek = "일월화수목금토".charAt(iDayOfWeek-1);
+//		
+//		//3) 출력
+//		response.setContentType("text/html");
+//		response.setCharacterEncoding("utf-8");	//없으면 한글 깨짐(2025? 2? 6?? ??? ???.)
+//		PrintWriter out = response.getWriter();	//브라우저로의 출력 스트림
+//		out.println(sYear + "년 " + sMonth + "월 " + sDay + "일은 " + cDayOfWeek + "요일 입니다.");
+//	}
+//}
+
+//관심사 분리(MVC 패턴 적용)
 @Controller
 public class DayCalculator
 {
-	@RequestMapping("/dayCalculator") //http://localhost:8080/spring_study/dayCalculator?year=2025&month=2&day=5
-	public static void main(HttpServletRequest request, HttpServletResponse response) throws IOException
+	@RequestMapping("/dayCalculator") //http://localhost:8080/spring_study/dayCalculator?iYear=2025&iMonth=2&iDay=5
+	public String main(int iYear, int iMonth, int iDay, HttpServletResponse response) throws IOException
 	{
-		//1) 입력
-		String sYear = request.getParameter("year");
-		String sMonth = request.getParameter("month");
-		String sDay = request.getParameter("day");
-		
-		//2) 작업
-		int iYear = Integer.parseInt(sYear);
-		int iMonth = Integer.parseInt(sMonth);
-		int iDay = Integer.parseInt(sDay);
-		
 		Calendar cCal = Calendar.getInstance();
 		cCal.set(iYear, iMonth-1, iDay);
 		
@@ -94,6 +115,9 @@ public class DayCalculator
 		response.setContentType("text/html");
 		response.setCharacterEncoding("utf-8");	//없으면 한글 깨짐(2025? 2? 6?? ??? ???.)
 		PrintWriter out = response.getWriter();	//브라우저로의 출력 스트림
-		out.println(sYear + "년 " + sMonth + "월 " + sDay + "일은 " + cDayOfWeek + "요일 입니다.");
+		out.println(iYear + "년 " + iMonth + "월 " + iDay + "일은 " + cDayOfWeek + "요일 입니다.");
+		
+		//출력 jsp 소스 위치 : /spring_study/src/main/webapp/WEB-INF/views/
+		return "dayOfWeek"; //dayOfWeek.jsp
 	}
 }
