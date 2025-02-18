@@ -1,14 +1,12 @@
 package com.naver.spring_study;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Calendar;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 //로컬 실행.
 //public class DayCalculator
@@ -102,22 +100,120 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class DayCalculator
 {
-	@RequestMapping("/dayCalculator") //http://localhost:8080/spring_study/dayCalculator?iYear=2025&iMonth=2&iDay=5
-	public String main(int iYear, int iMonth, int iDay, HttpServletResponse response) throws IOException
+	@RequestMapping("/dayCalculator") //http://localhost:8080/spring_study/dayCalculator?year=2025&month=2&day=5
+	public ModelAndView main(int year, int month, int day) throws IOException
 	{
-		Calendar cCal = Calendar.getInstance();
-		cCal.set(iYear, iMonth-1, iDay);
+		ModelAndView mv = new ModelAndView();
 		
-		int iDayOfWeek = cCal.get(Calendar.DAY_OF_WEEK);
-		char cDayOfWeek = "일월화수목금토".charAt(iDayOfWeek-1);
+		char dayOfWeek = this.getDayOfWeek(year, month, day);
 		
-		//3) 출력
-		response.setContentType("text/html");
-		response.setCharacterEncoding("utf-8");	//없으면 한글 깨짐(2025? 2? 6?? ??? ???.)
-		PrintWriter out = response.getWriter();	//브라우저로의 출력 스트림
-		out.println(iYear + "년 " + iMonth + "월 " + iDay + "일은 " + cDayOfWeek + "요일 입니다.");
+		mv.addObject("year", year);
+		mv.addObject("month", month);
+		mv.addObject("day", day);
+		mv.addObject("dayOfWeek", dayOfWeek);
+		mv.setViewName("dayOfWeek"); //view 지정
 		
-		//출력 jsp 소스 위치 : /spring_study/src/main/webapp/WEB-INF/views/
-		return "dayOfWeek"; //dayOfWeek.jsp
+		return mv;
+	}
+	
+//	@RequestMapping("/dayCalculator") //http://localhost:8080/spring_study/dayCalculator?year=2025&month=2&day=5
+//	public void main(int year, int month, int day, Model model) throws IOException
+//	{
+//		char dayOfWeek = this.getDayOfWeek(year, month, day);
+//		
+//		model.addAttribute("year", year);
+//		model.addAttribute("month", month);
+//		model.addAttribute("day", day);
+//		model.addAttribute("dayOfWeek", dayOfWeek);
+//		
+//		//자동으로 매핑된 URL의 끝단어 "dayCalculator"로 view를 view로 지정함 
+//	}
+	
+//	@RequestMapping("/dayCalculator") //http://localhost:8080/spring_study/dayCalculator?year=2025&month=2&day=5
+//	public String main(int year, int month, int day, Model model) throws IOException
+//	{
+//		if(!isValid(year, month, day))
+//		{
+//			return "dayOfWeekError";
+//		}
+//		
+//		char dayOfWeek = this.getDayOfWeek(year, month, day);
+//		
+//		model.addAttribute("year", year);
+//		model.addAttribute("month", month);
+//		model.addAttribute("day", day);
+//		model.addAttribute("dayOfWeek", dayOfWeek);
+//		
+//		return "dayOfWeek"; //출력 jsp 소스 위치 : /spring_study/src/main/webapp/WEB-INF/views/dayOfWeek.jsp
+//		//view의 상세 경로를 설정하는 파일 : /spring_study/src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml
+//	}
+	
+	private boolean isValid(int year, int month, int day)
+	{
+		final int START_DAY = 1;
+		int endDay = 0;
+		
+		//년 유효성 체크
+		if(year < 0)
+		{
+			return false;
+		}
+		
+		//월 유효성 체크
+		if(!(1<=month && month<=12))
+		{
+			return false;
+		}
+		
+		//일 세팅
+		switch(month)
+		{
+			case 1 :
+			case 3 :
+			case 5 :
+			case 7 :
+			case 8 :
+			case 10 :
+			case 12 : 
+				endDay = 31;
+				break;
+			case 4 :
+			case 6 :
+			case 9 :
+			case 11 :
+				endDay = 30;
+				break;
+			default :
+				endDay = 28;
+				break;
+		}
+		
+		//일 세팅(윤년)
+		if(month == 2)
+		{
+			if(year%4 == 0)
+			{
+				if(year%100 != 0 || year%400 == 0)
+				{
+					endDay = 29;
+				}
+			}
+		}
+		
+		//일 유효성 체크
+		if(!(START_DAY<=day && day<=endDay))
+		{
+			return false;
+		}
+		
+		return true;
+	}
+	
+	private char getDayOfWeek(int year, int month, int day)
+	{
+		Calendar cal = Calendar.getInstance();
+		cal.set(year, month-1, day);
+		
+		return "일월화수목금토".charAt(cal.get(Calendar.DAY_OF_WEEK)-1);
 	}
 }
