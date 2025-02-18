@@ -100,21 +100,21 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class DayCalculator
 {
-	@RequestMapping("/dayCalculator") //http://localhost:8080/spring_study/dayCalculator?year=2025&month=2&day=5
-	public ModelAndView main(int year, int month, int day) throws IOException
-	{
-		ModelAndView mv = new ModelAndView();
-		
-		char dayOfWeek = this.getDayOfWeek(year, month, day);
-		
-		mv.addObject("year", year);
-		mv.addObject("month", month);
-		mv.addObject("day", day);
-		mv.addObject("dayOfWeek", dayOfWeek);
-		mv.setViewName("dayOfWeek"); //view 지정
-		
-		return mv;
-	}
+//	@RequestMapping("/dayCalculator") //http://localhost:8080/spring_study/dayCalculator?year=2025&month=2&day=5
+//	public ModelAndView main(int year, int month, int day) throws IOException
+//	{
+//		ModelAndView mv = new ModelAndView();
+//		
+//		char dayOfWeek = this.getDayOfWeek(year, month, day);
+//		
+//		mv.addObject("year", year);
+//		mv.addObject("month", month);
+//		mv.addObject("day", day);
+//		mv.addObject("dayOfWeek", dayOfWeek);
+//		mv.setViewName("dayOfWeek"); //view 지정
+//		
+//		return mv;
+//	}
 	
 //	@RequestMapping("/dayCalculator") //http://localhost:8080/spring_study/dayCalculator?year=2025&month=2&day=5
 //	public void main(int year, int month, int day, Model model) throws IOException
@@ -129,24 +129,24 @@ public class DayCalculator
 //		//자동으로 매핑된 URL의 끝단어 "dayCalculator"로 view를 view로 지정함 
 //	}
 	
-//	@RequestMapping("/dayCalculator") //http://localhost:8080/spring_study/dayCalculator?year=2025&month=2&day=5
-//	public String main(int year, int month, int day, Model model) throws IOException
-//	{
-//		if(!isValid(year, month, day))
-//		{
-//			return "dayOfWeekError";
-//		}
-//		
-//		char dayOfWeek = this.getDayOfWeek(year, month, day);
-//		
-//		model.addAttribute("year", year);
-//		model.addAttribute("month", month);
-//		model.addAttribute("day", day);
-//		model.addAttribute("dayOfWeek", dayOfWeek);
-//		
-//		return "dayOfWeek"; //출력 jsp 소스 위치 : /spring_study/src/main/webapp/WEB-INF/views/dayOfWeek.jsp
-//		//view의 상세 경로를 설정하는 파일 : /spring_study/src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml
-//	}
+	@RequestMapping("/dayCalculator") //http://localhost:8080/spring_study/dayCalculator?year=2025&month=2&day=5
+	public String main(int year, int month, int day, Model model) throws IOException
+	{
+		if(!isValid(year, month, day))
+		{
+			return "dayOfWeekError";
+		}
+		
+		char dayOfWeek = this.getDayOfWeek(year, month, day);
+		
+		model.addAttribute("year", year);
+		model.addAttribute("month", month);
+		model.addAttribute("day", day);
+		model.addAttribute("dayOfWeek", dayOfWeek);
+		
+		return "dayOfWeek"; //출력 jsp 소스 위치 : /spring_study/src/main/webapp/WEB-INF/views/dayOfWeek.jsp
+		//view의 상세 경로를 설정하는 파일 : /spring_study/src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml
+	}
 	
 	private boolean isValid(int year, int month, int day)
 	{
