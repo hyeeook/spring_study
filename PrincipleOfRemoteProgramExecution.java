@@ -6,7 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller //원격 호출 가능한 프로그램으로 등록
-public class RemoteProgramPrincipleOfExecution //원격 프로그램의 실행 원리
+public class PrincipleOfRemoteProgramExecution
 {
 	@RequestMapping("/hello") //URL과 메서드 연결
 	private void main()
@@ -33,11 +33,11 @@ class UsingReflectionAPI //'Reflection API'를 사용하여 'private'인 인스�
 {
 	void main() throws Exception
 	{
-		Class<?> remoteProgramPrincipleOfExecutionClass = Class.forName("com.naver.spring_study.RemoteProgramPrincipleOfExecution"); //클래스 정보 가져오기
-		RemoteProgramPrincipleOfExecution remoteProgramPrincipleOfExecution = (RemoteProgramPrincipleOfExecution)remoteProgramPrincipleOfExecutionClass.newInstance(); //가져온 클래스 정보로 객체 생성
-		Method main = remoteProgramPrincipleOfExecutionClass.getDeclaredMethod("main"); //가져온 클래스 정보로 'main'이라는 이름의 메서드 정보 가져오기
+		Class<?> principleOfRemoteProgramExecutionClass = Class.forName("com.naver.spring_study.PrincipleOfRemoteProgramExecution"); //클래스 정보 가져오기
+		PrincipleOfRemoteProgramExecution principleOfRemoteProgramExecution = (PrincipleOfRemoteProgramExecution)principleOfRemoteProgramExecutionClass.newInstance(); //가져온 클래스 정보로 객체 생성
+		Method main = principleOfRemoteProgramExecutionClass.getDeclaredMethod("main"); //가져온 클래스 정보로 'main'이라는 이름의 메서드 정보 가져오기
 		main.setAccessible(true); //'private'인 main() 메서드를 호출 가능하게 설정
 		
-		main.invoke(remoteProgramPrincipleOfExecution); //RemoteProgramPrincipleOfExecution.main()
+		main.invoke(principleOfRemoteProgramExecution); //RemoteProgramPrincipleOfExecution.main()
 	}
 }
