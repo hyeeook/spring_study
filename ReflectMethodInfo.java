@@ -56,6 +56,20 @@ public class ReflectMethodInfo
 	}
 }
 
+//[실행결과]
 //java.lang.String main(int arg0, int arg1, int arg2, org.springframework.ui.Model arg3)
 //boolean isValid(int arg0, int arg1, int arg2)
 //char getDayOfWeek(int arg0, int arg1, int arg2)
+
+//[매개변수 이름 출력]
+//매개변수의 이름이 arg0으로 나오는데, 이유는 매개변수의 타입은 중요하지만 이름은 중요하지 않기 때문.
+//매개변수의 이름까지 나오게 하려면 컴파일 옵션에 -parameters 옵션(javac -parameters)을 추가해야 함(JDK 1.8부터 추가).
+//STS에서 컴파일 옵션을 추가하는 방법 :
+//						Window > Preferences > Java > Compiler
+//						> Compiler compliance level을 1.8 이상으로 변경
+//						> Store information about method parameters(usable via reflection) 체크
+//프로젝트의 자바 버전 변경하는 방법 :
+//						pom.xml 오픈
+//						> properties에서 java-version을 원하는 버전으로 수정
+//						> plugins에서 maven-compiler-plugin의 source, target도 동일한 버전으로 수정
+//						> 해당 프로젝트 우클릭 > Maven > Update Project...(pom.xml 수정 시에 반드시 수행해야 변경사항이 적용됨)
