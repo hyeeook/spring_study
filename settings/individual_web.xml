@@ -8,10 +8,12 @@
 		- 공통 설정이 먼저 적용되고 각 개별 설정이 적용됨
 		- 공통 설정을 개별 설정에서 덮어쓸 수 있음(같은 항목에 대해 공통 설정과 개별 설정에서 각각 값이 다르면 최종적으로 개별 설정의 값이 적용됨)
 	<태그기능>
-		<servlet> - 원격 프로그램(servlet) 등록 작업
-					현재는 애너테이션(서블릿 : @WebServlet / 스프링 : @Controller)으로 변경됨
-		<servlet-mapping> - 원격 프로그램(servlet) URL 연결 작업
-							현재는 애너테이션(서블릿 : @WebServlet / 스프링 : @RequestMapping)으로 변경됨
-							<servlet-name> : 대상 서블릿 이름 / <url-pattern> : 맵핑 패턴
-		web.xml에서 설정하는 것과 애너테이션 중 하나만 작업해야 함
+		- <servlet>
+			원격 프로그램(servlet) 등록 작업
+			현재는 애너테이션(서블릿 : @WebServlet / 스프링 : @Controller)으로 변경됨
+		- <servlet-mapping>
+			원격 프로그램(servlet) URL 연결 작업
+			현재는 애너테이션(서블릿 : @WebServlet / 스프링 : @RequestMapping)으로 변경됨
+			<servlet-name> : 대상 서블릿 이름 / <url-pattern> : 맵핑 패턴
+		- web.xml에서 설정하는 것과 애너테이션 중 하나만 작업해야 함
 -->
