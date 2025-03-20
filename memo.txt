@@ -1,0 +1,80 @@
+<Spring 편의성>
+  1) 스태틱 메서드가 아닌데 어떻게 호출될 수 있는가?
+  		> WAS 내부에서 객체를 생성함
+  2) 스태틱 메서드가 아닌 인스턴스 메서드를 사용하는 이유?
+  		> 인스턴스 메서드는 인스턴스 변수와 스태틱 변수를 모두 사용 가능
+  		> 스태틱 메서드는 스태틱 변수만 사용 가능
+  		> 가능하면 인스턴스 메서드로 사용하는 것이 유리함
+  		> 스태틱 메서드여도 객체 생성은 된 상태에서 호출되는 것
+  3) 접근제어자가 'public'이 아닌 'private'이어도 호출이 가능한가?
+  		> '@RequestMapping'으로 URL이 연결된 메서드라는 것은 외부에서 호출 가능하게 하겠다는 것이므로 접근제어자와 관계 없이 호출할 수 있음
+  		> 그러나 프로그램 내부에서는 'private'의 속성(타 클래스에서 호출 불가 등)을 가지게 됨
+  4) 1, 3번이 가능한 이유?
+  		> 'Reflection API'를 사용하기 때문에 가능함
+  		> java.lang.reflect 패키지(클래스 정보를 얻고 다룰 수 있는 강력한 기능) 제공
+  		
+------------------------------------------------------------------------------------------------------------------------------------------
+
+<이미지 위치>
+  /src/main/webapp/resources/
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
+<STS에서 매개변수를 받을 수 있도록 콘솔로 Java 소스 실행하는 방법>
+  1) 프로젝트 폴더 하위에 'target' 폴더(여기에 컴파일 된 class 파일이 생성됨) 우클릭
+	2) 위에서 네번째 'Show In' 클릭
+	3) 맨 위의 'Terminal' 클릭
+	4) 'cd classes' 입력
+	5) 'java com.naver.spring_study.DayCalculator 2025 01 01' 입력
+
+	ex)
+    public class DayCalculator
+    {
+    	public static void main(String[] args)
+    	{
+    		String sYear = args[0];
+    		String sMonth = args[1];
+    		String sDay = args[2];
+
+    		int iYear = Integer.parseInt(sYear);
+    		int iMonth = Integer.parseInt(sMonth);
+    		int iDay = Integer.parseInt(sDay);
+
+    		java.util.Calendar cCal = java.util.Calendar.getInstance();
+    		cCal.set(iYear, iMonth-1, iDay);
+
+    		int iDayOfWeek = cCal.get(java.util.Calendar.DAY_OF_WEEK);
+    		char cDayOfWeek = "일월화수목금토".charAt(iDayOfWeek-1);
+
+    		System.out.println(sYear + "년 " + sMonth + "월 " + sDay + "일은 " + cDayOfWeek + "요일 입니다.");
+    	}
+    }
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
+<Reflection API 사용 시에 매개변수의 이름까지 가져오는 방법>
+  - 매개변수의 이름이 arg0으로 나오는데, 이유는 매개변수의 타입은 중요하지만 이름은 중요하지 않기 때문
+  - 매개변수의 이름까지 나오게 하려면 컴파일 옵션에 -parameters 옵션(javac -parameters)을 추가해야 함(JDK 1.8부터 추가)
+  - STS에서 컴파일 옵션을 추가하는 방법 :
+  						1) Window > Preferences > Java > Compiler 오픈
+  						2) Compiler compliance level을 1.8 이상으로 변경
+  						3) Store information about method parameters(usable via reflection) 체크
+  - 프로젝트의 자바 버전 변경하는 방법 :
+  						1) pom.xml 오픈	> properties에서 java-version을 원하는 버전으로 수정
+  						2) plugins에서 maven-compiler-plugin의 source, target도 동일한 버전으로 수정
+  						3) 해당 프로젝트 우클릭 > Maven > Update Project...(pom.xml 수정 시에 반드시 수행해야 변경사항이 적용됨)
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
+Maven Dependencies에서 특정 라이브러리의 부재로 인한 에러 발생 시, 해결 방법
+1) pom.xml 파일 변경
+2) Tomcat의 라이브러리 변경
+  - Package Explorer에서 프로젝트 우클릭
+  - Build Path > Configure Build Path... 클릭
+  - Libraries 탭 클릭
+  - Class Path > Add Library... 클릭
+  - Server Runtime > 추가할 라이브러리 선택
+  - Package Explorer에서 선택한 라이브러리가 표시됨(선택한 라이브러리가 import 된 상태)
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
