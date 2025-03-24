@@ -13,7 +13,8 @@
 	<annotation-driven />
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
-	<resources mapping="/resources/**" location="/resources/" />
+	<!-- <resources mapping="/resources/**" location="/resources/" /> -->	<!-- '/resources'를 붙여야만 html 파일 등의 정적 리소스 접근 가능하게 설정	/ url : http://localhost:8080/spring_study/resources/registerForm.html	-->
+	<resources mapping="/**" location="/resources/" />			<!-- '/resources'를 붙이지 않고도 html 파일 등의 정적 리소스 접근 가능하게 설정	/ url : http://localhost:8080/spring_study/registerForm.html		-->
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<!-- view의 이름만 리턴하면 자동으로 앞뒤에 경로와 확장자를 붙여줌 -->
@@ -23,7 +24,8 @@
 	</beans:bean>
 	
 	<context:component-scan base-package="com.naver.spring_study" />
-	
-	
-	
 </beans:beans>
+<!--
+	- /src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml : web 관련 설정 파일
+	- /src/main/webapp/WEB-INF/spring/root-context.xml : non-web 관련 설정 파일
+-->
