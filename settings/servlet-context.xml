@@ -22,6 +22,10 @@
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
+
+	<!-- @Controller의 메서드에서 특별한 로직 처리 없이 단순히 화면만 보여주는 경우, view-controller 태그로 대체할 수 있음 -->
+	<!-- path : @RequestMapping에 지정한 경로 / view-name : @Controller의 메서드에서 return문에 사용하는 view 파일 이름   -->
+	<view-controller path="/register/add" view-name="registerForm"/>
 	
 	<context:component-scan base-package="com.naver.spring_study" />
 </beans:beans>
