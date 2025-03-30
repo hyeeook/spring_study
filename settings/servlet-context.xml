@@ -17,7 +17,7 @@
 	<resources mapping="/**" location="/resources/" />			<!-- '/resources'를 붙이지 않고도 html 파일 등의 정적 리소스 접근 가능하게 설정	/ url : http://localhost:8080/spring_study/registerForm.html		-->
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
-	<!-- view의 이름만 리턴하면 자동으로 앞뒤에 경로와 확장자를 붙여줌 -->
+	<!-- Controller에서 반환된 view의 이름을 DispatcherServlet에서 InternalResourceViewResolver를 호출하여 접두사와 접미사가 붙여진 완전한 view의 이름을 알아냄 -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
