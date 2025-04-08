@@ -44,3 +44,21 @@ public class DayCalculator
   > 1) pom.xml 오픈 > properties에서 java-version을 원하는 버전으로 수정
   > 2) plugins에서 maven-compiler-plugin의 source, target도 동일한 버전으로 수정
   > 3) 해당 프로젝트 우클릭 > Maven > Update Project...(pom.xml 수정 시에 반드시 수행해야 변경사항이 적용됨)
+
+---
+
+### Maven Dependencies에서 특정 라이브러리의 부재로 인한 에러 발생 시, 해결 방법
+- pom.xml 파일 변경
+- Tomcat의 라이브러리 변경
+  > 1) Package Explorer에서 프로젝트 우클릭
+  > 2) Build Path > Configure Build Path... 클릭
+  > 3) Libraries 탭 클릭
+  > 4) Class Path > Add Library... 클릭
+  > 5) Server Runtime > 추가할 라이브러리 선택
+  > 6) Package Explorer에서 선택한 라이브러리가 표시됨(선택한 라이브러리가 import 된 상태)
+
+---
+
+### 소스 파일 한글 깨짐 현상 조치
+1) Window > Preferences > Web > HTML Files > Encoding : ISO 10646/Unicode(UTF-8) 변경
+2) HTML 파일 외에도 한글이 깨지는 현상이 발생하면 해당 파일의 Encoding을 UTF-8로 변경
