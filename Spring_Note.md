@@ -48,8 +48,8 @@ public class DayCalculator
 ---
 
 ### Maven Dependencies에서 특정 라이브러리의 부재로 인한 에러 발생 시, 해결 방법
-- pom.xml 파일 변경
-- Tomcat의 라이브러리 변경
+방법(1) pom.xml 파일 변경<br><br>
+방법(2) Tomcat의 라이브러리 변경
   > 1) Package Explorer에서 프로젝트 우클릭
   > 2) Build Path > Configure Build Path... 클릭
   > 3) Libraries 탭 클릭
