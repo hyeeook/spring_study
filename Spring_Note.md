@@ -5,8 +5,7 @@
 4) 'cd classes' 입력
 5) 'java com.naver.spring_study.DayCalculator 2025 01 01' 입력
 
-ex)
-```
+```java
 public class DayCalculator
 {
 	public static void main(String[] args)
