@@ -1,6 +1,6 @@
-## STS 툴 사용법
+# STS Tool 사용법
 
-### STS에서 매개변수를 받을 수 있도록 콘솔로 Java 소스 실행하는 방법
+## STS에서 매개변수를 받을 수 있도록 콘솔로 Java 소스 실행하는 방법
 1) 프로젝트 폴더 하위에 'target' 폴더(여기에 컴파일 된 class 파일이 생성됨) 우클릭
 2) 위에서 네번째 'Show In' 클릭
 3) 맨 위의 'Terminal' 클릭
@@ -33,7 +33,7 @@ public class DayCalculator
 
 ---
 
-### Reflection API 사용 시에 매개변수의 이름까지 가져오는 방법
+## Reflection API 사용 시에 매개변수의 이름까지 가져오는 방법
 - 매개변수의 이름이 arg0으로 나오는데, 이유는 매개변수의 타입은 중요하지만 이름은 중요하지 않기 때문
 - 매개변수의 이름까지 나오게 하려면 컴파일 옵션에 -parameters 옵션(javac -parameters)을 추가해야 함(JDK 1.8부터 추가)
 - STS에서 컴파일 옵션을 추가하는 방법
@@ -47,7 +47,7 @@ public class DayCalculator
 
 ---
 
-### Maven Dependencies에서 특정 라이브러리의 부재로 인한 에러 발생 시, 해결 방법
+## Maven Dependencies에서 특정 라이브러리의 부재로 인한 에러 발생 시, 해결 방법
 - 방법(1) pom.xml 파일 변경
 - 방법(2) Tomcat의 라이브러리 변경
   > 1) Package Explorer에서 프로젝트 우클릭
@@ -59,13 +59,13 @@ public class DayCalculator
 
 ---
 
-### 소스 파일 한글 깨짐 현상 조치
+## 소스 파일 한글 깨짐 현상 조치
 1) Window > Preferences > Web > HTML Files > Encoding : ISO 10646/Unicode(UTF-8) 변경
 2) HTML 파일 외에도 한글이 깨지는 현상이 발생하면 해당 파일의 Encoding을 UTF-8로 변경
 
 ---
 
-### 의존 모듈 충돌로 오류 발생 시 조치
+## 의존 모듈 충돌로 오류 발생 시 조치
 1) 'C:\Users\hyeeo\.m2' 이동
 2) repository 폴더 삭제('.m2' 폴더는 절대 삭제하면 안 됨)
 3) STS 실행
@@ -78,4 +78,4 @@ public class DayCalculator
 
 ---
 
-### ㅇ
+## ㅇ
