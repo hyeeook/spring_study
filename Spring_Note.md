@@ -67,4 +67,10 @@ public class DayCalculator
 
 ### 의존 모듈 충돌로 오류 발생 시 조치
 1) 'C:\Users\hyeeo\.m2' 이동
-2) ㅇ
+2) repository 폴더 삭제('.m2' 폴더는 절대 삭제하면 안 됨)
+3) STS 실행
+4) 해당 프로젝트 우클릭 > Maven > Update Project...
+5) 'C:\Users\hyeeo\.m2' 이동하면 repository 폴더가 다시 생성되어 있음
+
+'C:\Users\hyeeo\.m2' 경로는 Maven이 저장소로 사용.
+스프링 개발 시에 알 수 없는 오류들이 발생하는데, 대부분 의존 모듈의 충돌로 발생하므로 본 조치를 수행해 볼 필요가 있음.
