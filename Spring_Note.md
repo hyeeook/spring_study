@@ -62,3 +62,9 @@ public class DayCalculator
 ### 소스 파일 한글 깨짐 현상 조치
 1) Window > Preferences > Web > HTML Files > Encoding : ISO 10646/Unicode(UTF-8) 변경
 2) HTML 파일 외에도 한글이 깨지는 현상이 발생하면 해당 파일의 Encoding을 UTF-8로 변경
+
+---
+
+### 의존 모듈 충돌로 오류 발생 시 조치
+1) 'C:\Users\hyeeo\.m2' 이동
+2) ㅇ
