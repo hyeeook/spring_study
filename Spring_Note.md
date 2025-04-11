@@ -73,7 +73,7 @@ public class DayCalculator
 5) 'C:\Users\hyeeo\.m2' 이동하면 삭제했던 repository 폴더가 다시 생성되어 있음
 
 'C:\Users\hyeeo\.m2' 경로는 Maven이 저장소로 사용. 스프링 개발 시에 알 수 없는 오류들이 발생하는데, 대부분 의존 모듈의 충돌로 발생하므로 본 조치를 수행해 볼 필요가 있음.<br>
-spring-web-5.0.7.RELEASE.jar : 클래스 파일<br>
-spring-web-5.0.7.RELEASE-sources.jar : 소스 파일
+spring-web-5.0.7.RELEASE.jar : 실제 모듈(.class 파일)<br>
+spring-web-5.0.7.RELEASE-sources.jar : 소스(.java 파일), 이 파일이 있어야 모듈의 소스를 볼 수 있음.
 
 ---
