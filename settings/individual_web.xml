@@ -15,6 +15,8 @@
 	</listener>
 
 	<!-- Processes application requests -->
+	<!-- 원격프로그램 등록 -->
+	<!-- @WebServlet(서블릿), @Controller(스프링)에 해당하는 부분. 이전에는 아래와 같이 모두 등록을 해야 했으나 서블릿에서는 @WebServlet으로, 스프링에서는 @Controller으로 대체됨. -->
 	<servlet>
 		<servlet-name>appServlet</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -24,7 +26,10 @@
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
-		
+	
+	<!-- URL 연결 -->
+	<!-- @WebServlet(서블릿), @RequestMapping(스프링)에 해당하는 부분. 이전에는 아래와 같이 모두 등록을 해야 했으나 서블릿에서는 @WebServlet으로, 스프링에서는 @RequestMapping으로 대체됨. -->
+    <!-- 'appServlet'라는 이름의 servlet을 '/' 패턴과 연결 -->
 	<servlet-mapping>
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>/</url-pattern>
